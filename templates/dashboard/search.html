@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix | Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include additional CSS files or styles here -->
+</head>
+<body style="background-color: rgb(26, 27, 31);">    
+    <nav class="navbar navbar-expand-lg p-4" style="background-color: rgb(19, 21, 32);">
+        <a class="navbar-brand" href="#"><img src="{% static 'assets/img/logo.png' %}" alt="netflix-logo" height="30" width="150"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/dashboard/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard/movies/">Movies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard/series/">Series</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-outline-danger" href="/dashboard/logout">Log Out</a>
+            </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" method="get" action="/dashboard/search/">
+            <input class="form-control mr-sm-2" type="search" name="search_name" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search">Search</button>
+            </form>
+        </div>
+    </nav>
+        
+    <div class="container" style="margin-top: 2.5%;">
+        <div class="row" style="background-color: rgb(13, 14, 20); border-radius: 30px;">
+            <div class="col-12" style="border-radius: 30px;">
+                <div class="card" style="background-color: rgb(13, 14, 20); border-radius: 30px;">
+                    <div class="card-header">
+                        <h3 class="card-title text-white p-2">Search Results</h3>
+                        <hr class="bg-white">
+                    </div>
+                    
+                    <div class="card-body">
+                        {%if result == "found" %}       
+                            {% for i in zz %}                          
+                                <div class="row bg-dark p-2" style="border-radius: 8px;">
+                                    <div class="col-3">
+                                        <img src="{% static i.path %}" height="50" width="50" alt="movie">
+
+                                    </div>
+                                    <div class="col-9">
+                                        <h5 class="text-white">{{i.name}}</h5>
+
+                                    </div>
+                                    
+                                </div><br>
+                        
+                            {%endfor%}
+                        {%else%}
+                        <div class="row bg-info p-2" style="border-radius: 8px;">
+                            <div class="col-3">
+                                <h5 class='text-danger'>{{zz}}</h5>
+                            </div>
+                        </div><br>
+                        {%endif%}
+                    </div>
+                </div>
+                
+            </div>            
+        </div>
+        <br>
+
+    </div>
+
+    <br>
+    <footer class="footer p-5 bg-dark">
+        <hr class="bg-white">
+        <span class="text-white p-3">Copyright &copy; 2023</span>
+    </footer>
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

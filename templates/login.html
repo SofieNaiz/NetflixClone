@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Netflix - Login</title>
+    <link rel="stylesheet" href="{% static 'vendors/feather/feather.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
+</head>
+
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth px-0 bg-dark">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5" 
+                    style="color: #e0e2e8; background-color: rgb(25,42,59); border-radius: 15px;">
+                        <div class="brand-logo text-center">
+                            <img src="{% static 'assets/img/logo.png' %}" alt="logo">
+                        </div>
+                        <h4>Sign in to continue</h4>
+                        <i class="font-weight-light text-danger" id="invalids">{{ name }}</i>
+                        <form class="pt-3" method="POST" id="login-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" id="officerID"
+                                       placeholder="Email" name="email" style="border-radius: 30px;" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-lg" id="exampleInputPassword1"
+                                       placeholder="Password" name="password" id='officerPWD' style="border-radius: 30px;" required>
+                            </div>
+                            <div class="mt-3" style="margin-bottom: 5%">
+                                <button class="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn"
+                                        type="submit" id="submit-btn" name="submit"
+                                        style="border: 1px solid #0a0a0a;border-radius: 30px;">SIGN IN
+                                </button>
+                            </div>
+                            <div class="my-2 d-flex justify-content-between align-items-center">
+                                <a href="account/accountRecovery/" class="auth-link text-danger">Forgot password?</a>
+                            </div>
+                            <div class="mb-2">
+
+                            </div>
+                            <div class="text-center mt-4 font-weight-light">
+                                Don't have an account? <a href="/register/" class="text-primary">Create</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+
+<!-- ... Existing code ... -->
+
+
+<script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
+<script src="{% static 'js/off-canvas.js' %}"></script>
+<script src="{% static 'js/hoverable-collapse.js' %}"></script>
+<script src="{% static 'js/template.js' %}"></script>
+<script src="{% static 'js/settings.js' %}"></script>
+<script src="{% static 'js/todolist.js' %}"></script>
+
+</body>
+
+</html>
